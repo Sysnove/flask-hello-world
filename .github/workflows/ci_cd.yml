@@ -37,4 +37,4 @@ jobs:
         aws-region: us-east-1
     - name: Copy files to the test bucket with the AWS CLI
       run: |
-        aws s3 cp my-artifact s3://mybucket-yt-test/
+        aws s3 sync my-artifact s3://mybucket-yt-test/
