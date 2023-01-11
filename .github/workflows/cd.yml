@@ -14,6 +14,10 @@ jobs:
 
     steps:
     - uses: actions/download-artifact@v3
+    - name: Copy files to the test bucket with the AWS CLI
+      run: |
+        ls -al 
+        pwd
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
