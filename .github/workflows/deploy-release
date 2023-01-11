@@ -1,0 +1,18 @@
+---
+name: "deploy-release"
+
+on:
+  push:
+    tags:
+      - "latest"
+
+jobs:
+  tagged-release:
+    name: "Tagged Release"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      # ...
+      - name: "Build & test"
+        run: |
+          echo "done!"
