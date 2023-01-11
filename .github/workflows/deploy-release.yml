@@ -2,24 +2,18 @@
 name: "deploy-release"
 
 on:
-  push:
-    tags:
-      - "**"
-
+  workflow_run:
+    workflows: ["release"]
+    branches: [master]
+    types: 
+      - completed
 jobs:
   tagged-release:
     name: "Tagged Release"
     runs-on: "ubuntu-latest"
 
     steps:
-      # ...
-      - name: "Build & test"
-        run: |
-          echo "done!"
-          
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "DONTMERGE/flask-hello-world"
-          latest: true
-          tarBall: true
-          zipBall: true
+    - uses: actions/download-artifact@v3
+      with:
+        name: my-artifact
+        path: path/to/artifact
