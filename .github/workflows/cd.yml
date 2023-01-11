@@ -1,9 +1,9 @@
 ---
-name: "deploy-release"
+name: "cd"
 
 on:
   workflow_run:
-    workflows: ["release"]
+    workflows: ["ci"]
     branches: [master]
     types: 
       - completed
