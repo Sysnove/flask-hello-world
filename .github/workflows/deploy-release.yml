@@ -4,7 +4,7 @@ name: "deploy-release"
 on:
   push:
     tags:
-      - "latest"
+      - "**"
 
 jobs:
   tagged-release:
@@ -16,6 +16,7 @@ jobs:
       - name: "Build & test"
         run: |
           echo "done!"
+          
       - uses: robinraju/release-downloader@v1.7
         with:
           repository: "DONTMERGE/flask-hello-world"
