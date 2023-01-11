@@ -1,7 +1,6 @@
 ---
 name: "release"
 
-name: "Publish GitHub Action"
 on:
   push:
     branches:    
