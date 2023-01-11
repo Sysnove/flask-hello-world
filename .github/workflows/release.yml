@@ -14,4 +14,4 @@ jobs:
     - uses: actions/checkout@v1
     - uses: tgymnich/publish-github-action@v1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.TEST_TOKEN }}
