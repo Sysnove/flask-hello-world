@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/download-artifact@v3
       with:
-        path: .
+        path: *
     - name: Copy files to the test bucket with the AWS CLI
       run: |
         ls -al 
