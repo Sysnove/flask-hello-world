@@ -8,26 +8,36 @@ on:
       - main
 
 jobs:
-  CI:
+  CI-Build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Remove git directories
+      run: |
+        rm -rf .git*
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
         path: .
+        
+  CI-Test:
+    runs-on: ubuntu-latest
+    needs: CI-Build
+    steps:
+      - name: "Check file existence"
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "README.md"
+          fail: true
+  
   CD:
     runs-on: "ubuntu-latest"
-    needs: ci
+    needs: CI-Test
 
     steps:
     - uses: actions/download-artifact@v3
       with:
         path: .
-    - name: Copy files to the test bucket with the AWS CLI
-      run: |
-        ls -al 
-        pwd
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
